@@ -3,6 +3,6 @@ const app = express();
 
 const helloWorld = require('./helloWorld')
 
-app.use('/', helloWorld);
+app.use('/teste', helloWorld);
 
 module.exports = app;
