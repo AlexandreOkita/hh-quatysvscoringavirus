@@ -76,10 +76,7 @@ export default class boxInfo extends Component {
                 </div>
             </div>
 
-            <ConfirmationModal show={this.state.modalShow} handleClose={this.hideModal}>
-              <p>MOdal</p>
-              <p>MOdal</p>
-            </ConfirmationModal>
+            <ConfirmationModal show={this.state.modalShow} handleClose={this.hideModal} />
           </>
         )
     }

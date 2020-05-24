@@ -15,8 +15,8 @@ export default class SearchBar extends Component {
         <input
           className="search"
           placeholder="Pesquisar produto..."
-          onfocus={(e) => e.target.placeholder = ""}
-          onblur={(e) => e.target.placeholder = "Pesquisar produto..."}
+          onFocus={(e) => e.target.placeholder = ""}
+          onBlur={(e) => e.target.placeholder = "Pesquisar produto..."}
         ></input>
 
       </nav >
