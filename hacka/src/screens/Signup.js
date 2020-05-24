@@ -1,5 +1,5 @@
 import React, { Component } from "react" //always import
-import './Signup.css';
+import './Signup.scss';
 import Logo from '../images/logo.png'
 import {Button} from '@material-ui/core';
 
