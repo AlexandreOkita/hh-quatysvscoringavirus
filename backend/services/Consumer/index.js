@@ -7,7 +7,7 @@ class Consumer{
     
     static async registerConsumer({name, email}){
         try{
-            q = query(
+            let q = query(
                 "INSERT INTO consumer(name, email) VALUES (?, ?)",
                 [name, email]
             );
@@ -21,13 +21,14 @@ class Consumer{
 
     static async loginConsumer({email}){
         try{
-            q = query(
+            let q = await query(
                 "SELECT idconsumer, name FROM consumer WHERE email = ?",
                 [email]
             );
-
-            return {message: 'Succes', status: 200, consumer: {id: q[0].id, name: q[0].name}};
+            console.log({message: 'Succes', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}})
+            return {message: 'Succes', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}};
         } catch (error){
+            console.log(error);
             throw error;
         }
     }
