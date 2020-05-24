@@ -8,7 +8,7 @@ router.post('/register', (req, res) => {
     const email = req.body.email;
 
     Consumer.registerConsumer({name: name, email: email})
-        .then((response) => res.status(200).send(response))
+        .then(response => res.status(200).send(response))
         .catch(error => res.status(500).send(error));
 });
 

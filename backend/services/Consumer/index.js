@@ -7,7 +7,7 @@ class Consumer{
     
     static async registerConsumer({name, email}){
         try{
-            let q = query(
+            let q = await query(
                 "INSERT INTO consumer(name, email) VALUES (?, ?)",
                 [name, email]
             );
