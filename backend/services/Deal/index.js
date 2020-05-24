@@ -38,18 +38,20 @@ class Deal{
 
     static async participateDeal({iddeal, idconsumer}){
         try{
-            let q0 = await query(
-                "INSERT INTO consumer_wants_deal(deal_iddeal, consumer_idconsumer) VALUES (?, ?)",
-                [iddeal, idconsumer]
-            );
+            //let q0 = await query(
+            //    "INSERT INTO consumer_wants_deal(deal_iddeal, consumer_idconsumer) VALUES (?, ?)",
+            //    [iddeal, idconsumer]
+            //);
+            console.log('IDDEAL', iddeal)
             let q1 = await query(
-                "SELECT iddeal FROM deal WHERE iddeal = ?",
-                [actualbuyers]
+                "SELECT * FROM deal WHERE iddeal = ?",
+                [iddeal]
             );
-            let newNum = q1[0].actualbuyers + 1;
+            console.log('RETURNS', q1)
+            let newNum = q1[0].actual_buyers + 1;
             let q2 = await query(
-                "UPDATE deal SET actualbuyers = ? WHERE iddeal = ?",
-                [newNum, actualbuyers]
+                "UPDATE deal SET actual_buyers = ? WHERE iddeal = ?",
+                [newNum, iddeal]
             );
             return {message: 'Success', status: 200};
         } catch(error){

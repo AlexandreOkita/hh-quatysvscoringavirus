@@ -24,13 +24,16 @@ router.get('/getinfo', (req, res) => {
 });
 
 router.post('/participate', (req, res) => {
+    console.log('BODY', req.body)
 
     const deal = req.body.iddeal;
     const consumer = req.body.idconsumer;
 
     Deal.participateDeal({iddeal: deal, idconsumer: consumer})
         .then(response => res.status(200).send(response))
-        .catch(error => res.status(500).send(error));
+        .catch(error => {
+            console.log(error);
+            res.status(500).send(error)});
 });
 
 module.exports = router;
