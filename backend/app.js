@@ -3,7 +3,7 @@ const app = express();
 
 const helloWorld = require('./helloWorld');
 const consumer = require('./api/routes/consumer');
-const consumer = require('./api/routes/deal');
+const deal = require('./api/routes/deal');
 const debugConsole = require('./api/middleware/consoleDebug');
 
 app.use(debugConsole);

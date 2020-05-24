@@ -4,6 +4,7 @@ const util = require('util');
 const query = util.promisify(connection.query).bind(connection);
 
 class Deal{
+
     static async createDeal({idproduct, targetbuyers, targetprice, expiration}){
         try{
             let q = await query(

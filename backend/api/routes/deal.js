@@ -2,6 +2,19 @@ const express = require('express');
 const router = express.Router();
 const Deal = require('../../services/Deal');
 
+router.post('/create', (req, res) => {
+
+  const idproduct = req.body.idproduct;
+  const targetbuyers = req.body.targetbuyers;
+  const targetprice = req.body.targetprice;
+  const expiration = req.body.expiration;
+
+  Deal.participateDeal({idproduct: idproduct, targetbuyers: targetbuyers,
+                        targetprice: targetprice, expiration: expiration})
+      .then(response => res.status(200).send(response))
+      .catch(error => res.status(500).send(error));
+});
+
 router.get('/getinfo', (req, res) => {
 
     const id = req.body.iddeal;
