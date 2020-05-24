@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
 //import your component (see SignUp as example)
-
 import Signup from './screens/Signup';
 import chatbot from './screens/chatbot';
+
+import './index.scss';
+import App from './App';
 
 //every path is the url, our initial screen will be Signup 
 

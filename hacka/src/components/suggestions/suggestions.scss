@@ -1,0 +1,30 @@
+.suggestions {
+    margin-top: 300px;
+    width: 80%;
+    margin: 300px auto;
+
+    h1 {
+        font-family: 'Comfortaa', cursive;
+        font-size: 30px;
+    }
+
+    .mySlider {
+        margin: 40px auto;
+      
+        .card {
+            margin: 10px;
+            height: 300px;
+            width: 250px!important;
+    
+            border-radius: 15px;
+    
+            -webkit-box-shadow: 2px 13px 19px -9px rgba(0,0,0,0.75), -2px -3px 19px -9px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 13px 19px -9px rgba(0,0,0,0.75), -2px -3px 19px -9px rgba(0,0,0,0.75);
+            box-shadow: 2px 13px 19px -9px rgba(0,0,0,0.75), -2px -3px 19px -9px rgba(0,0,0,0.75);
+            background-color: white;
+        }
+    }
+
+
+
+}
