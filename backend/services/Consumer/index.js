@@ -25,8 +25,8 @@ class Consumer{
                 "SELECT idconsumer, name FROM consumer WHERE email = ?",
                 [email]
             );
-            console.log({message: 'Succes', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}})
-            return {message: 'Succes', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}};
+            console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}})
+            return {message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}};
         } catch (error){
             console.log(error);
             throw error;
