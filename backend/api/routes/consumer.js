@@ -23,7 +23,7 @@ router.get('/login', (req, res) => {
 
 router.post('/buy', (req, res) => {
     const idconsumer = req.body.idconsumer;
-    const idproduct = req.body,idproduct;
+    const idproduct = req.body.idproduct;
     const price = req.body.price;
 
     Consumer.buyProduct({idproduct: idproduct, idconsumer: idconsumer, price: price})
@@ -32,7 +32,7 @@ router.post('/buy', (req, res) => {
 });
 
 router.post('/wallet', (req, res) => {
-
+    console.log('req', req.body);
     const id = req.body.id;
     const diffcredit = req.body.diffcredit;
     console.log('Changing Credit:', diffcredit);
