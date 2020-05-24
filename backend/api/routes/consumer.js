@@ -20,4 +20,15 @@ router.get('/login', (req, res) => {
         .then(response => res.status(200).send(response))
         .catch(error => res.status(500).send(error));
 });
+
+router.post('/buy', (req, res) => {
+    const idconsumer = req.body.idconsumer;
+    const idproduct = req.body,idproduct;
+    const price = req.body.price;
+
+    Consumer.buyProduct({idproduct: idproduct, idconsumer: idconsumer, price: price})
+        .then(response => res.status(200).send(response))
+        .catch(error => res.status(500).send(error));
+});
+
 module.exports = router;

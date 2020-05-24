@@ -25,12 +25,28 @@ class Consumer{
                 "SELECT idconsumer, name FROM consumer WHERE email = ?",
                 [email]
             );
-            console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}})
+            console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}});
             return {message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}};
         } catch (error){
             console.log(error);
             throw error;
         }
+    }
+
+    static async buyProduct({idproduct, idconsumer, price}){
+        try{
+            await this.changeCredit({idconsumer: idconsumer, diffCredit: -1*price});
+            let q = await query(
+                "INSERT INTO consumer_buy_product(consumer_idconsumer, product_idproduct, price) VALUES (?, ?, ?)",
+                [idconsumer, idproduct, price]
+            );
+            return {message: 'Success', status: 200};
+        } catch(error){
+            console.log(error);
+            throw error;
+        }
+        
+
     }
 }
 
