@@ -1,0 +1,58 @@
+$black-fonts-color: rgba(80, 80, 80, 0.918);
+
+.infoBox {
+    height: 600px;
+    display: flex;
+
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 8px 19px -9px rgba(0,0,0,0.75), -1px -5px 19px -9px rgba(0,0,0,0.75) ;
+    -moz-box-shadow: 0px 8px 19px -9px rgba(0,0,0,0.75), -1px -5px 19px -9px rgba(0,0,0,0.75) ;
+    box-shadow: 0px 8px 19px -9px rgba(0,0,0,0.75), -1px -5px 19px -9px rgba(0,0,0,0.75) ;
+    
+    img {
+        position: relative;
+        height: 600px;
+        width: 600px;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+    
+    .informations {
+        font-size: 20px;
+        margin: auto;
+
+        p {
+            font-family: 'Roboto';
+            color: $black-fonts-color;
+            margin: 20px;        
+        }
+
+        button {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            width: 250px;
+            border: none;
+            background: none;
+            
+            .participationButton {
+                font-family: 'Comfortaa', cursive;
+                font-size: 15px;
+                font-weight: 700;
+                
+                margin: 0;
+                width: 100%;
+                padding: 15px;
+
+                border-color: white;
+                border-radius: 15px;
+                
+                cursor: pointer;
+                background-color: rgb(34, 77, 194);
+                color: white;
+            }
+        }
+
+    }
+}
+
