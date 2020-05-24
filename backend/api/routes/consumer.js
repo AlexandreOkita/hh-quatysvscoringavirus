@@ -12,9 +12,9 @@ router.post('/register', (req, res) => {
         .catch(error => res.status(500).send(error));
 });
 
-router.post('/login', (req, res) => {
+router.get('/login', (req, res) => {
     
-    const email = req.body.email;
+    const email = req.query.email;
 
     Consumer.loginConsumer({email: email})
         .then((response) => res.status(200).send(response))
