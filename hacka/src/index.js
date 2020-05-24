@@ -3,18 +3,20 @@ import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 //import your component (see SignUp as example)
-import Signup from './screens/Signup';
+import Signup from './screens/login/Signup';
 
 import './index.scss';
 import App from './screens/App';
+import ProductPage from './components/productPage/ProductPage'
 
 //every path is the url, our initial screen will be Signup 
 
 const routing = (
   <Router>
     <div>
-      <Route path ="/login" component={Signup} />
-      <Route path ="/" component = {App}/>
+      <Route path = "/login" component= {Signup} />
+      <Route exact path = "/" component = {App}/>
+      <Route path = "/productView" component = {ProductPage} />
     </div>
   </Router>
 )

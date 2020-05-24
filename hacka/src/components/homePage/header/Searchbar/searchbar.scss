@@ -1,0 +1,53 @@
+$place-holder-color:rgba(75, 75, 75, 0.616);
+$black-fonts-color: rgba(68, 67, 67, 0.918);
+
+.searchbar {
+  position: relative;
+  width: 60%;
+
+  
+  .search {
+    width: 95%;
+    height: 100%;
+    border: none;
+    
+    background-color: rgba(255, 255, 255, 0.904);
+    border: 1px solid rgba(194, 194, 194, 0.336);
+    border-radius: 10px;
+    color: $black-fonts-color;
+    font-size: 18px;
+    
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    padding: 12px;
+    
+    -webkit-box-shadow: 8px 5px 20px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 8px 5px 20px -13px rgba(0,0,0,0.75);
+    box-shadow: 8px 5px 20px -13px rgba(0,0,0,0.75);
+  }
+
+  
+  ::placeholder {
+    font-family: 'Comfortaa', cursive;
+    color: $place-holder-color;
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  ::-webkit-input-placeholder {
+    /* Edge */
+    color: $place-holder-color;
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $place-holder-color;
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+  }
+}
