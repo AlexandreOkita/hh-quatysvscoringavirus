@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Deal = require('../../services/Deal');
-
 router.post('/create', (req, res) => {
 
   const idproduct = req.body.idproduct;
@@ -14,6 +13,7 @@ router.post('/create', (req, res) => {
       .then(response => res.status(200).send(response))
       .catch(error => res.status(500).send(error));
 });
+
 
 router.get('/getinfo', (req, res) => {
 

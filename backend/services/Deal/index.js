@@ -22,7 +22,7 @@ class Deal{
     static async getDeal({id}){
         try{
             let q = await query(
-                "SELECT * FROM consumer WHERE iddeal = ?",
+                "SELECT * FROM deal WHERE iddeal = ?",
                 [id]
             );
             console.log({message: 'Success', status: 200, deal: {idproduct: q[0].idproduct}});
