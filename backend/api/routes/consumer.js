@@ -33,8 +33,8 @@ router.post('/buy', (req, res) => {
 
 router.post('/wallet', (req, res) => {
 
-    const id = req.query.id;
-    const diffcredit = req.query.diffcredit;
+    const id = req.body.id;
+    const diffcredit = req.body.diffcredit;
     console.log('Changing Credit:', diffcredit);
     Consumer.changeCredit({id: id, diffcredit: diffcredit})
         .then(response => res.status(200).send(response))
