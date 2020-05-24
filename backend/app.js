@@ -3,8 +3,9 @@ const app = express();
 
 const helloWorld = require('./helloWorld');
 const consumer = require('./api/routes/consumer');
+const debugConsole = require('./api/middleware/consoleDebug');
 
-console.log('DEBUG: Entrando na rota', req.url);
+app.use(debugConsole);
 app.use('/teste', helloWorld);
 app.use('/consumer', consumer);
 
