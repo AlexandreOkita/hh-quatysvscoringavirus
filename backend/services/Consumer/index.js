@@ -35,7 +35,7 @@ class Consumer{
 
     static async buyProduct({idproduct, idconsumer, price}){
         try{
-            await this.changeCredit({idconsumer: idconsumer, diffCredit: -1*price});
+            await this.changeCredit({id: idconsumer, diffCredit: -1*price});
             let q = await query(
                 "INSERT INTO consumer_buy_product(consumer_idconsumer, product_idproduct, price) VALUES (?, ?, ?)",
                 [idconsumer, idproduct, price]
