@@ -11,8 +11,7 @@ export default class ProductPage extends Component {
 
                 <div className="productInfo">
                     <h1 className="ProductTitle">Mesas para área de alimentação</h1>
-                    <BoxInfo />
-
+                    <BoxInfo ProductPage="Mesas para área de alimentação" />
                 </div>
             </>
         )
