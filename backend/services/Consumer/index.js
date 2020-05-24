@@ -18,6 +18,19 @@ class Consumer{
             throw error;
         }
     }
+
+    static async loginConsumer({email}){
+        try{
+            q = query(
+                "SELECT idconsumer, name FROM consumer WHERE email = ?",
+                [email]
+            );
+
+            return {message: 'Succes', status: 200, consumer: {id: q[0].id, name: q[0].name}};
+        } catch (error){
+            throw error;
+        }
+    }
 }
 
 module.exports = Consumer;
