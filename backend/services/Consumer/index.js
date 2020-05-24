@@ -37,8 +37,8 @@ class Consumer{
         try{
             await this.changeCredit({id: idconsumer, diffCredit: -1*price});
             let q = await query(
-                "INSERT INTO consumer_buy_product(consumer_idconsumer, product_idproduct, price) VALUES (?, ?, ?)",
-                [idconsumer, idproduct, price]
+                "INSERT INTO consumer_buy_product(product_idproduct, price) VALUES (?, ?) WHERE idconsumer = ?",
+                [idproduct, price, idconsumer]
             );
             return {message: 'Success', status: 200};
         } catch(error){
