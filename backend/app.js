@@ -8,5 +8,6 @@ const debugConsole = require('./api/middleware/consoleDebug');
 app.use(debugConsole);
 app.use('/teste', helloWorld);
 app.use('/consumer', consumer);
+app.use('/deal', deal);
 
 module.exports = app;
