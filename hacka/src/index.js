@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 
 //import your component (see SignUp as example)
 import Signup from './screens/Signup';
-import chatbot from './screens/chatbot';
 
 import './index.scss';
 import App from './App';
@@ -16,7 +15,6 @@ const routing = (
   <Router>
     <div>
       <Route path="/" component={Signup} />
-      <Route path = "/" component = {chatbot} />
     </div>
   </Router>
 )
