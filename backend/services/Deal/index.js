@@ -21,6 +21,18 @@ class Deal{
             throw error;
         }
     }
+
+    static async participateDeal({iddeal, idconsumer}){
+        try{
+            let q = await query(
+                "INSERT INTO consumer_wants_deal(deal_iddeal, consumer_idconsumer) VALUES (?, ?)",
+                [iddeal, idconsumer]
+            );
+            return {message: 'Success', status: 200};
+        } catch(error){
+            throw error;
+        }
+    }
 }
 
 module.exports = Deal;
