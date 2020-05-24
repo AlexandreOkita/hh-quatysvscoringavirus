@@ -1,0 +1,22 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2020-05-23 18:36
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: okita
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+ALTER TABLE `simoo`.`product` 
+ADD COLUMN `sugested_price` FLOAT(11) NOT NULL AFTER `delete_date`,
+ADD COLUMN `minimum_price` FLOAT(11) NULL DEFAULT NULL AFTER `sugested_price`;
+
+ALTER TABLE `simoo`.`consumer_buy_product` 
+ADD COLUMN `price` FLOAT(11) NOT NULL AFTER `date`;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
