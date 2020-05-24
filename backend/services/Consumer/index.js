@@ -11,9 +11,7 @@ class Consumer{
                 "INSERT INTO consumer(name, email) VALUES (?, ?)",
                 [name, email]
             );
-
             return {message: 'Success', status: 200};
-
         } catch(error){
             throw error;
         }
@@ -46,7 +44,7 @@ class Consumer{
             throw error;
         }
     }
-        
+
 
     static async changeCredit({id, diffcredit}){
         try{
@@ -56,8 +54,8 @@ class Consumer{
             );
             let newCredit = q0[0].credit + diffcredit;
             let q1 = await query(
-                "UPDATE consumer SET credit=newCredit WHERE idconsumer = ?",
-                [id]
+                "UPDATE consumer SET credit = ? WHERE idconsumer = ?",
+                [newCredit, id]
             );
             console.log({message: 'Success', status: 200, consumer: {id: id, credit: newCredit}})
             return {message: 'Success', status: 200, consumer: {id: id, credit: newCredit}};
