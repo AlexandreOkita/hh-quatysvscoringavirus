@@ -3,7 +3,7 @@ const router = express.Router();
 const Consumer = require('../../services/Consumer');
 
 router.post('/register', (req, res) => {
-    
+
     const name = req.body.name;
     const email = req.body.email;
 
@@ -13,7 +13,7 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    
+
     const email = req.query.email;
     console.log('Email Login:', email);
     Consumer.loginConsumer({email: email})
@@ -27,6 +27,16 @@ router.post('/buy', (req, res) => {
     const price = req.body.price;
 
     Consumer.buyProduct({idproduct: idproduct, idconsumer: idconsumer, price: price})
+        .then(response => res.status(200).send(response))
+        .catch(error => res.status(500).send(error));
+});
+
+router.post('/wallet', (req, res) => {
+
+    const id = req.query.id;
+    const diffcredit = req.query.diffcredit;
+    console.log('Changing Credit:', diffcredit);
+    Consumer.changeCredit({id: id, diffcredit: diffcredit})
         .then(response => res.status(200).send(response))
         .catch(error => res.status(500).send(error));
 });
