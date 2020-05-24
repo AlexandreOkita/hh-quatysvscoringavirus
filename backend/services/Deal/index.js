@@ -4,6 +4,19 @@ const util = require('util');
 const query = util.promisify(connection.query).bind(connection);
 
 class Deal{
+    static async createDeal({idproduct, targetbuyers, targetprice, expiration}){
+        try{
+            let q = await query(
+                "INSERT INTO deal(idproduct, targetbuyers, targetprice, expiration) VALUES (?, ?)",
+                [idproduct, targetbuyers, targetprice, expiration]
+            );
+            console.log({message: 'Success', status: 200});
+            return {message: 'Success', status: 200}
+        } catch (error){
+            console.log(error);
+            throw error;
+        }
+    }
 
     static async getDeal({id}){
         try{
@@ -11,7 +24,7 @@ class Deal{
                 "SELECT * FROM consumer WHERE iddeal = ?",
                 [id]
             );
-            console.log({message: 'Success', status: 200, deal: {id: q[0].idconsumer, name: q[0].name}});
+            console.log({message: 'Success', status: 200, deal: {idproduct: q[0].idproduct}});
             return {message: 'Success', status: 200, deal: {interest_count: q[0].actualbuyers,
                                                             interest_target: q[0].targetbuyers,
                                                             target_price: q[0].targetprice,
