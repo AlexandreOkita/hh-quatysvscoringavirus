@@ -5,13 +5,13 @@ import './confirmModal.scss'
 export default class ConfirmModal extends Component {
     
     render() {
-        const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+        const showHideClassName = this.props.show ? 'modal display-block' : 'modal display-none';
 
         return (
-            <div className="showHideClassname">
+            <div className={showHideClassName}>
                 <section className="modal-main">
-                    {Children}
-                    <button onClick={handleClose}>close</button>
+                    {this.props.Children}
+                    <button onClick={this.props.handleClose}>close</button>
                 </section>
             </div>
 
