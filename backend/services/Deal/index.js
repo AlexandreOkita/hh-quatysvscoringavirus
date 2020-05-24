@@ -26,9 +26,9 @@ class Deal{
                 [id]
             );
             console.log({message: 'Success', status: 200, deal: {idproduct: q[0].idproduct}});
-            return {message: 'Success', status: 200, deal: {interest_count: q[0].actualbuyers,
-                                                            interest_target: q[0].targetbuyers,
-                                                            target_price: q[0].targetprice,
+            return {message: 'Success', status: 200, deal: {interest_count: q[0].actual_buyers,
+                                                            interest_target: q[0].target_buyers,
+                                                            target_price: q[0].target_price,
                                                             prazo: q[0].expiration}};
         } catch (error){
             console.log(error);
