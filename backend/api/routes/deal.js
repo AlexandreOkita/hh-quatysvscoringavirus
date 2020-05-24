@@ -17,7 +17,7 @@ router.post('/create', (req, res) => {
 
 router.get('/getinfo', (req, res) => {
 
-    const id = req.body.iddeal;
+    const id = req.query.iddeal;
     Deal.getDeal({id})
         .then(response => res.status(200).send(response))
         .catch(error => res.status(500).send(error));
