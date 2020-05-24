@@ -4,7 +4,7 @@ const util = require('util');
 const query = util.promisify(connection.query).bind(connection);
 
 class Consumer{
-    
+
     static async registerConsumer({name, email}){
         try{
             let q = await query(
@@ -27,6 +27,25 @@ class Consumer{
             );
             console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}})
             return {message: 'Success', status: 200, consumer: {id: q[0].idconsumer, name: q[0].name}};
+        } catch (error){
+            console.log(error);
+            throw error;
+        }
+    }
+
+    static async changeCredit({id, diffcredit}){
+        try{
+            let q0 = await query(
+                "SELECT credit FROM consumer WHERE idconsumer = ?",
+                [id]
+            );
+            let newCredit = q0[0].credit + diffcredit;
+            let q1 = await query(
+                "UPDATE consumer SET credit=newCredit WHERE idconsumer = ?",
+                [id]
+            );
+            console.log({message: 'Success', status: 200, consumer: {id: id, credit: newCredit}})
+            return {message: 'Success', status: 200, consumer: {id: id, credit: newCredit}};
         } catch (error){
             console.log(error);
             throw error;
