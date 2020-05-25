@@ -3,23 +3,25 @@ import './header.scss'
 import { RiBarChartHorizontalLine } from "react-icons/ri"
 import { MdAddShoppingCart } from "react-icons/md"
 import { IconContext } from 'react-icons'
-
 import Logo from '../../../../images/logo.png'
 
 import Searchbar from '../Searchbar/Searchbar'
 import Categories from '../Categories/Categories'
-
+import UserCredit from '../userCredit/UserCredit'
+import {Link} from 'react-router-dom'
 
 export default function Header() {
     return (
       <>
         <div className="header">
-            <img src={Logo} className="logo"></img>
+           <Link to="/"> <img src={Logo} className="logo"></img> </Link>
             <Searchbar />
             <LargeBarsIcon />
             <LargeCartIcon />
         </div>
-            <Categories />
+
+        <UserCredit />
+        <Categories />
       </>
     )
 }
@@ -48,3 +50,4 @@ function LargeCartIcon() {
       </IconContext.Provider>
     );
 }
+

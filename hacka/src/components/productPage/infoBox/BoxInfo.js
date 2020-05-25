@@ -16,37 +16,42 @@ export default class boxInfo extends Component {
       original_price: -1,
       price_target: -1,
       prazo: '2020-01-01',
+      merchant_name: '',
       modalShow: false
     }
   }
 
   componentDidMount() {
-      this.getInfo();
+      this.getInfo(this.state.iddeal);
   }
   
-    async getInfo(iddeal) {
-        try {
-          console.log('DEBUG TEST');
-          await fetch( 'http://34.95.183.232/hack/deal/getinfo'+'?iddeal='+this.state.iddeal.toString(), {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-          }).then(res => res.json())
-            .then(json => {
-                this.setState({
-                    people_number: json.interest_count || 40,
-                    people_target: json.interest_target || 60,
-                    original_price: json.original_price || 'R$50,00',
-                    price_target: json.target_price || 'R$30,00',
-                    prazo: json.prazo || '2020-05-01'
-                })
-            })
-        } catch {
-          console.log("ERROR")
-        }
-    }
+  async getInfo(event) {
+    try {
+      console.log('DEBUG TEST');
+      await fetch( 'http://34.95.183.232/hack/deal/getinfo'+'?iddeal='+this.state.iddeal.toString(), {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }).then(res => res.json())
+          .then(json => {
+              json = json.deal;
+              console.log('DEBUG:', json);
+              console.log('TARGET_PRICE', json.target_price);
+              this.setState({
+                  people_number: json.interest_count,
+                  people_target: json.interest_target,
+                  original_price: json.original_price,
+                  price_target: json.target_price,
+                  merchant_name: json.merchant_name,
+                  prazo: json.prazo.slice(0, 10)
+              })
+          })
+      } catch {
+        console.log("ERROR")
+      }
+  }
 
     showModal = () => {
       this.setState({ modalShow: true })
@@ -66,8 +71,8 @@ export default class boxInfo extends Component {
                         <p>Pessoas interessadas: {this.state.people_number}</p>
                         <p>Meta de pessoas interessadas: {this.state.people_target}</p>
                         <p>Preço original: {this.state.original_price}</p>
-                        <p>Melhor oferta: {this.state.target_price}</p>  
-                        <p>Cooperativa: {'z'}</p>
+                        <p>Melhor oferta: {this.state.price_target}</p>  
+                        <p>Cooperativa: {this.state.merchant_name}</p>
                         <p>Prazo: {this.state.prazo}</p>     
 
                         <button type="button" onClick={this.showModal}>
@@ -76,7 +81,12 @@ export default class boxInfo extends Component {
                 </div>
             </div>
 
-            <ConfirmationModal show={this.state.modalShow} handleClose={this.hideModal} />
+            <ConfirmationModal
+             show={this.state.modalShow} 
+             handleClose={this.hideModal} 
+             update={this.getInfo}
+             price={this.state.price_target} 
+             />
           </>
         )
     }
