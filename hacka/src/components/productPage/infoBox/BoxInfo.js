@@ -9,7 +9,7 @@ export default class boxInfo extends Component {
     super(props);
     
     this.state = {
-      iddeal: 1, 
+      iddeal: 2, 
       idconsumer: 1,
       people_number: -1,
       people_target: -1,
@@ -17,15 +17,17 @@ export default class boxInfo extends Component {
       price_target: -1,
       prazo: '2020-01-01',
       merchant_name: '',
+      image: '',
       modalShow: false
     }
+
   }
 
   componentDidMount() {
       this.getInfo(this.state.iddeal);
   }
   
-  async getInfo(event) {
+  getInfo =  async (iddeal) => {
     try {
       console.log('DEBUG TEST');
       await fetch( 'http://34.95.183.232/hack/deal/getinfo'+'?iddeal='+this.state.iddeal.toString(), {
@@ -45,8 +47,10 @@ export default class boxInfo extends Component {
                   original_price: json.original_price,
                   price_target: json.target_price,
                   merchant_name: json.merchant_name,
-                  prazo: json.prazo.slice(0, 10)
+                  prazo: json.prazo.slice(0, 10),
+                  image: json.image
               })
+
           })
       } catch {
         console.log("ERROR")
@@ -61,17 +65,18 @@ export default class boxInfo extends Component {
       this.setState({ modalShow: false });
     }
 
+
     render() {
         return (
           <>
             <div className="infoBox">
-                <img src={Product} />
+                <img src={this.state.image} />
 
                 <div className="informations">
                         <p>Pessoas interessadas: {this.state.people_number}</p>
                         <p>Meta de pessoas interessadas: {this.state.people_target}</p>
-                        <p>Preço original: {this.state.original_price}</p>
-                        <p>Melhor oferta: {this.state.price_target}</p>  
+                        <p>Preço original: R${this.state.original_price}</p>
+                        <p>Melhor oferta: R${this.state.price_target}</p>  
                         <p>Cooperativa: {this.state.merchant_name}</p>
                         <p>Prazo: {this.state.prazo}</p>     
 
@@ -84,8 +89,9 @@ export default class boxInfo extends Component {
             <ConfirmationModal
              show={this.state.modalShow} 
              handleClose={this.hideModal} 
-             update={this.getInfo}
-             price={this.state.price_target} 
+             handleUpdate={this.getInfo}
+             price={this.state.price_target}
+             deal={this.state.iddeal}
              />
           </>
         )

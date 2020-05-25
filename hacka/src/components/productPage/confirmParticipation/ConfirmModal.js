@@ -2,14 +2,14 @@ import React, { Component} from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { IconContext } from 'react-icons'
 import './confirmModal.scss'
-
+import Slider from './slider/Slider'
 
 export default class ConfirmModal extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      iddeal: 1, 
+      iddeal: this.props.price, 
       idconsumer: 1,
       credit: -999,
     }
@@ -81,7 +81,7 @@ confirmButton = () => {
   console.log('TESTEE')
   this.participate(this.state.iddeal, this.state.idconsumer);
   this.buyProduct();
-  this.props.update();
+  this.props.handleUpdate();
   this.props.handleClose();
 };
 
@@ -96,10 +96,8 @@ render() {
                     <p>Crédito na carteira: {this.state.credit}</p>
     <p>Saldo após confirmação: {this.state.credit - this.props.price}({this.state.credit} - {this.props.price}) <br/> <span className="smallSize">(para preço atual de compra)</span></p>
 
-                    <p className="alert">Você pode cancelar sua participação <br/>
-                        até 72h antes do prazo de fechamento de compra <br/>
-                        do produto
-                    </p>
+                    <p className="alert">Para onde você deseja direcionar sua compra? <br/></p>
+                    <Slider />
 
                     <button className="confirmButton" onClick={this.confirmButton}>Confirmar</button>
                 </div>
