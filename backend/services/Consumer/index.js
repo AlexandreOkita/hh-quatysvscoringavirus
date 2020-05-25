@@ -34,9 +34,10 @@ class Consumer{
     static async getCredit({id}){
         try{
             let q = await query(
-                "SELECT credit FROM consumer WHERE idconsumer = ?",
+                "SELECT idconsumer, credit FROM consumer WHERE idconsumer = ?",
                 [id]
             );
+            console.log('RESULTS', q);
             console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, credit: q[0].credit}});
             return {message: 'Success', status: 200, consumer: {credit: q[0].credit}};
         } catch (error){
