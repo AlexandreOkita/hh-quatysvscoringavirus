@@ -31,6 +31,20 @@ class Consumer{
         }
     }
 
+    static async getCredit({id}){
+        try{
+            let q = await query(
+                "SELECT credit FROM consumer WHERE idconsumer = ?",
+                [id]
+            );
+            console.log({message: 'Success', status: 200, consumer: {id: q[0].idconsumer, credit: q[0].credit}});
+            return {message: 'Success', status: 200, consumer: {credit: q[0].credit}};
+        } catch (error){
+            console.log(error);
+            throw error;
+        }
+    }
+
     static async buyProduct({idproduct, idconsumer, price}){
         try{
             await this.changeCredit({id: idconsumer, diffCredit: -1*price});

@@ -21,6 +21,15 @@ router.get('/login', (req, res) => {
         .catch(error => res.status(500).send(error));
 });
 
+router.get('/credit', (req, res) => {
+
+    const id = req.query.idconsumer;
+    console.log('Consumer Id:', id);
+    Consumer.getCredit({id: id})
+        .then(response => res.status(200).send(response))
+        .catch(error => res.status(500).send(error));
+});
+
 router.post('/buy', (req, res) => {
     const idconsumer = req.body.idconsumer;
     const idproduct = req.body.idproduct;
