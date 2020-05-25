@@ -11,7 +11,7 @@ export default class Highlight extends Component {
         return (
             <>
                 <div className="highlightBox">
-                    <Link link to="productView"> 
+                    <Link link to="productView..1"> 
                         <div  className="highlightProduct">
                             <img src={Product} alt=""/>
 

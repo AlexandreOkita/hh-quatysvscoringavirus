@@ -1,0 +1,16 @@
+.sliderContainer {
+
+    .slideer {
+        margin-left: 80px;
+    }
+
+    .textBlock {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        p {
+            color: black;
+            font-size: 13px;
+        }
+    }
+}
